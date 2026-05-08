@@ -1,0 +1,217 @@
+:root {
+    --bg-color: #05070a;
+    --surface-color: #0f172a;
+    --accent-cyan: #00f2ff;
+    --accent-purple: #7000ff;
+    --text-main: #e2e8f0;
+    --disk-gradient: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+    --shadow-glow: 0 0 20px rgba(0, 242, 255, 0.3);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+    background: radial-gradient(circle at center, #1e293b 0%, #05070a 100%);
+}
+
+header {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    background: linear-gradient(to right, #fff, var(--accent-cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 10px rgba(0, 242, 255, 0.3));
+}
+
+.stats-container {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 30px;
+    background: rgba(15, 23, 42, 0.6);
+    padding: 15px 40px;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--accent-cyan);
+}
+
+.stat-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: #64748b;
+}
+
+.game-world {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    height: 350px;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    padding-bottom: 20px;
+}
+
+.tower-pilar {
+    position: relative;
+    width: 120px;
+    height: 250px;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    cursor: pointer;
+}
+
+.tower-pilar::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 10px;
+    height: 100%;
+    background: linear-gradient(to top, #1e293b, #334155);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.tower-pilar.highlight::before {
+    background: var(--accent-cyan);
+    box-shadow: 0 0 20px var(--accent-cyan);
+}
+
+.disk {
+    position: absolute;
+    height: 24px;
+    border-radius: 12px;
+    background: var(--disk-gradient);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    transition: all 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+    z-index: 5;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.disk.selected {
+    transform: translateY(-60px);
+    box-shadow: var(--shadow-glow);
+    filter: brightness(1.2);
+}
+
+.controls {
+    margin-top: 40px;
+    display: flex;
+    gap: 15px;
+}
+
+button {
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+button:hover {
+    border-color: var(--accent-cyan);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Gaya untuk tombol Next Phase */
+button.next-btn {
+    background: linear-gradient(135deg, #00ff88, #00a1ff);
+    border: 1px solid rgba(0, 255, 136, 0.5);
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
+    font-weight: bold;
+}
+
+button.next-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 0 25px rgba(0, 255, 136, 0.4);
+    border-color: #00ff88;
+}
+
+/* Tambahan: Pastikan area kontrol rapi di mobile */
+@media (max-width: 600px) {
+    .controls {
+        flex-direction: column;
+        width: 100%;
+        padding: 0 20px;
+    }
+    button {
+        width: 100%;
+    }
+}
+
+button.primary {
+    background: var(--disk-gradient);
+}
+
+#win-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background: var(--surface-color);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid var(--accent-cyan);
+}
+
+.modal-stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+/* Update class .disk di style-play.css */
+.disk {
+    position: absolute;
+    height: 24px;
+    border-radius: 12px;
+    background: var(--disk-gradient);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    /* Tambahkan transisi smooth ini */
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1); 
+    z-index: 5;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Tambahkan class khusus saat disk sedang dipindahkan AI */
+.disk.moving-ai {
+    z-index: 100;
+    filter: brightness(1.2);
+    box-shadow: 0 0 20px var(--accent-cyan);
+}

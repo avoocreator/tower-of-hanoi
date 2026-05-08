@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tower of Hanoi | Coding Mode</title>
+    <link rel="icon" type="image/png" href="Untitled design (65).png">
+    <link rel="stylesheet" href="coding-style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="brand">
+            <h1>Hanoi <span style="font-weight: 200;">[SHUFFLE_MODE]</span></h1>
+        </div>
+        <div class="status-bar">
+            <div class="status-item">MOVES: <span id="move-count">0</span></div>
+            <div class="status-item">SYSTEM: <span id="status-text">INITIALIZED</span></div>
+        </div>
+    </header>
+
+    <main>
+        <section class="visualizer-section">
+            <div class="game-world" id="stage">
+                <div class="pilar" id="pilar-0" data-label="TOWER 0"></div>
+                <div class="pilar" id="pilar-1" data-label="TOWER 1"></div>
+                <div class="pilar" id="pilar-2" data-label="TOWER 2"></div>
+                <div class="pilar" id="pilar-3" data-label="TOWER 3"></div>
+                <div class="pilar" id="pilar-4" data-label="TOWER 4"></div>
+            </div>
+        </section>
+
+        <section class="editor-section">
+            <div class="editor-header">
+                <span>auto_solver.js</span>
+                <span>JavaScript ES6</span>
+            </div>
+            <div class="editor-container">
+                <div class="line-numbers" id="ln"></div>
+                <textarea id="code-editor" spellcheck="false"></textarea>
+            </div>
+
+            <div class="console-area" id="console"></div>
+
+            <div class="toolbar">
+                <button class="btn-run" id="run-btn">RUN SCRIPT</button>
+                <button class="btn-reset" id="reset-btn">RE-SHUFFLE</button>
+                <span class="speed-label">ANIMATION SPEED</span>
+                <input type="range" id="speed" min="200" max="1000" value="600">
+            </div>
+        </section>
+    </main>
+
+    <div id="notif"></div>
+
+    <script src="coding-script.js"></script>
+    </body>
+
+</html>

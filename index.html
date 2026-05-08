@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tower of Hanoi</title>
+    <link rel="icon" type="image/png" href="Untitled design (65).png">
+    <link rel="stylesheet" href="style-play.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Tower of Hanoi Challenge</h1>
+        <p class="subtitle">Selesaikan Susunan 5 Tower</p>
+    </header>
+
+    <div class="stats-container">
+        <div class="stat-item">
+            <span class="stat-label">Moves</span>
+            <span id="move-count" class="stat-value">0</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-label">Time</span>
+            <span id="timer" class="stat-value">00:00</span>
+        </div>
+    </div>
+
+    <div id="status-msg"></div>
+
+    <div class="game-world" id="game-board">
+    </div>
+
+    <div class="controls">
+    <button onclick="initGame()">Reset Prototype</button>
+    <button class="primary" id="solve-btn" onclick="startAutoSolve()">Surrender (AI Solve)</button>
+    <button class="next-btn" id="next-level-btn" onclick="goToNextLevel()">Next Phase →</button>
+</div>
+
+    <div id="win-modal">
+        <div class="modal-content">
+            <h2>MISSION ACCOMPLISHED</h2>
+            <p style="margin-bottom: 20px; color: #94a3b8;">Puzzle Terselesaikan</p>
+            <div class="modal-stats">
+                <div>
+                    <div class="stat-label">Total Langkah</div>
+                    <div id="final-moves" class="stat-value">0</div>
+                </div>
+                <div>
+                    <div class="stat-label">Waktu Tempuh</div>
+                    <div id="final-time" class="stat-value">00:00</div>
+                </div>
+            </div>
+            <button class="primary" onclick="closeModal()">Main Lagi</button>
+        </div>
+    </div>
+
+    <script src="script-play.js"></script>
+</body>
+
+</html>
